@@ -10,28 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_215411) do
+ActiveRecord::Schema.define(version: 2019_03_06_234242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "grocery_lists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "grocery_store_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "grocery_stores", force: :cascade do |t|
-    t.string "address"
-    t.string "hours"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "inventories", force: :cascade do |t|
-    t.integer "grocery_store_id"
+    t.integer "store_id"
     t.integer "product_id"
     t.integer "price"
     t.datetime "created_at", null: false
@@ -39,11 +24,19 @@ ActiveRecord::Schema.define(version: 2019_03_06_215411) do
   end
 
   create_table "list_products", force: :cascade do |t|
-    t.integer "grocery_list_id"
+    t.integer "list_id"
     t.integer "product_id"
     t.integer "quantity"
     t.integer "status"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "store_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,6 +47,14 @@ ActiveRecord::Schema.define(version: 2019_03_06_215411) do
     t.string "upc_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "address"
+    t.string "hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
