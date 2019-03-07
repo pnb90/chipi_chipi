@@ -6,10 +6,10 @@ class Api::ListsController < ApplicationController
 
   def create
     @list = List.new(
-                                    name: params[:name],
-                                    user_id: params[:user_id],
-                                    store_id: params[:store_id]
-                                    )
+                     name: params[:name],
+                     user_id: params[:user_id],
+                     store_id: params[:store_id]
+                     )
     if @list.save
       render 'show.json.jbuilder'
     else

@@ -28,7 +28,7 @@ class Api::ProductsController < ApplicationController
 
     @product.name = params[:name] || @product.name,
     @product.weight = params[:weight] || @product.weight,
-    @product.upc_code = params[:upc_code || @product.upc_code]
+    @product.upc_code = params[:upc_code] || @product.upc_code
 
     if @product.save
       render 'show.json.jbuilder'
