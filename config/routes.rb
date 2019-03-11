@@ -23,5 +23,12 @@ Rails.application.routes.draw do
     post "/lists" => 'lists#create'
     patch "/lists/:id" => 'lists#update'
     delete "/lists/:id" => 'lists#destroy'
+
+    get "/inventories" => 'inventories#index'
+    get "/inventories/:id" => 'inventories#show'
+    get '/inventories/new' => 'inventories#new'
+    post "/inventories" => 'inventories#create'
+    patch "/inventories/:id" => 'inventories#update'
+    delete "/inventories/:id" => 'inventories#destroy'
   end
 end
