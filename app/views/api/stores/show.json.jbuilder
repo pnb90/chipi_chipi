@@ -1,0 +1,1 @@
+json.partial! @store, partial: "store", as: :store
