@@ -6,7 +6,7 @@ class Api::ListProductsController < ApplicationController
 
   def create
     @list_product = ListProduct.new(
-                                    grocery_list_id: params[:grocery_list_id],
+                                    list_id: params[:list_id],
                                     product_id: params[:product_id],
                                     quantity: params[:quantity],
                                     status: params[:status],
@@ -27,7 +27,7 @@ class Api::ListProductsController < ApplicationController
   def update
     @list_product = ListProduct.find(params[:id])
 
-    @list_product.grocery_list_id = params[:grocery_list_id] || @list_product.grocery_list_id,
+    @list_product.list_id = params[:list_id] || @list_product.list_id,
     @list_product.product_id = params[:product_id] || @list_product.product_id,
     @list_product.quantity = params[:quantity] || @list_product.quantity,
     @list_product.status = params[:status] || @list_product.status,
