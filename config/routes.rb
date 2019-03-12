@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     get "/users" => 'users#index'
-    post "/users" => 'users#create'  
+    post "/users" => 'users#create' 
+
+    post "/sessions" => "sessions#create" 
 
     get "/stores" => 'stores#index'
     get "/stores/:id" => 'stores#show'
@@ -30,5 +32,12 @@ Rails.application.routes.draw do
     post "/inventories" => 'inventories#create'
     patch "/inventories/:id" => 'inventories#update'
     delete "/inventories/:id" => 'inventories#destroy'
+
+    get "/list_products" => 'list_products#index'
+    get "/list_products/:id" => 'list_products#show'
+    get '/list_products/new' => 'list_products#new'
+    post "/list_products" => 'list_products#create'
+    patch "/list_products/:id" => 'list_products#update'
+    delete "/list_products/:id" => 'list_products#destroy'
   end
 end
