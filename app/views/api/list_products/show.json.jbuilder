@@ -1,0 +1,1 @@
+json.partial! @list_product, partial: "list_product", as: :list_product

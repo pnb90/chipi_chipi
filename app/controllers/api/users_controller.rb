@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
 
   def create
     user = User.new(
+                    nickname: params[:nickname],
                     email: params[:email],
                     password: params[:password],
                     password_confirmation: params[:password_confirmation]
