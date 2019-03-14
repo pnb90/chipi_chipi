@@ -3,6 +3,6 @@ json.name product.name
 json.weight product.weight
 json.upc_code product.upc_code
 
-json.store do
-  json.array! product.stores, partial: 'api/stores/store', as: :store 
-end 
+json.inventories do 
+  json.array! product.inventories, partial: 'api/inventories/inventory', as: :inventory 
+end
