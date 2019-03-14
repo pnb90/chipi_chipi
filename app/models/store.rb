@@ -4,7 +4,13 @@ class Store < ApplicationRecord
 
   has_many :lists
 
-  def in_stock?
+
+  def stock
     Product.all.select{|product| product.inventories.count > 0 }
   end
+
+  def in_stock?
+ 
+  end
+
 end

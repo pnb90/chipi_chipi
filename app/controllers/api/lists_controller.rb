@@ -1,13 +1,14 @@
 class Api::ListsController < ApplicationController
+
   def index
-    @lists = List.all 
+    @lists = current_user.lists 
     render 'index.json.jbuilder'
   end
 
   def create
     @list = List.new(
                      name: params[:name],
-                     user_id: params[:user_id],
+                     user_id: current_user.id,
                      store_id: params[:store_id]
                      )
     if @list.save
@@ -38,7 +39,12 @@ class Api::ListsController < ApplicationController
 
   def destroy
     list = List.find(params[:id])
-    list.destroy
-    render json: {message: "Successfully removed list."}
+
+    if list.user_id == current_user.id
+      list.destroy
+      render json: {message: "Successfully removed list."}
+    else
+      render json: {status: :unauthorized}
+    end
   end
 end
