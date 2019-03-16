@@ -4,7 +4,3 @@ json.product_id list_product.product_id
 json.quantity list_product.quantity
 json.status list_product.status
 json.description list_product.description
-
-json.product do
-  json.partial! list_product.product, partial: 'api/products/product', as: :product 
-end

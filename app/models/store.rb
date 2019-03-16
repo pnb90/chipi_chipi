@@ -1,5 +1,5 @@
 class Store < ApplicationRecord
-  has_one :inventory
+  has_one :inventory, dependent: :destroy
   has_many :products, through: :inventory
 
   has_many :lists
