@@ -5,9 +5,11 @@ class Api::ListProductsController < ApplicationController
   end
 
   def create
+    product = Product.find_by(name: params[:product_name])
+
     @list_product = ListProduct.new(
                                     list_id: params[:list_id],
-                                    product_id: params[:product_id],
+                                    product_id: product.id,
                                     quantity: params[:quantity],
                                     status: params[:status],
                                     description: params[:description]
